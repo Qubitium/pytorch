@@ -895,6 +895,13 @@ if(USE_ROCM)
   endif()
 endif()
 
+# CK shared lib linkage
+if(USE_ROCM)
+	if(UNIX AND (USE_CK_FLASH_ATTENTION))
+    include(cmake/External/ck.cmake)
+  endif()
+endif()
+
 if(DEBUG_CUDA)
   string(APPEND CMAKE_CUDA_FLAGS_DEBUG " -lineinfo")
   string(APPEND CMAKE_CUDA_FLAGS_RELWITHDEBINFO " -lineinfo")

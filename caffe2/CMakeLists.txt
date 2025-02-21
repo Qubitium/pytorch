@@ -924,7 +924,7 @@ if(USE_ROCM)
   if(USE_FLASH_ATTENTION)
     target_link_libraries(torch_hip PRIVATE __caffe2_aotriton)
   endif()
-  # link to CK shared lib
+  # link CK shared lib
   if(USE_CK_FLASH_ATTENTION)
     target_link_libraries(torch_hip PRIVATE __ck_lib)
   endif()
