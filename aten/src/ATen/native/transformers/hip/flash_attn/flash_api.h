@@ -270,6 +270,7 @@ mha_fwd(
     const bool return_softmax,
     std::optional<at::Generator> gen_) {
 #if defined(USE_CK_FLASH_ATTENTION)
+  std::cout << "Calling CK from mha_fwd\n";
   if (at::globalContext().getROCmFAPreferredBackend() ==
       at::ROCmFABackend::Ck) {
     return mha_fwd_ck(
@@ -301,6 +302,7 @@ mha_fwd(
         gen_);
   }
 #else
+  std::cout << "Not calling CK from mha_fwd\n";
   return mha_fwd_aot(
       q,
       k,
